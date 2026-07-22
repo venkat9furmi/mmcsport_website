@@ -14,8 +14,17 @@
     "servicesHeading": "Services",
     "companyHeading": "Company",
     "contactHeading": "Contact",
+    "live": "Live",
+    "social": "Social",
+    "artwork": "Artwork",
+    "community": "Community",
+    "about": "About",
+    "newsroom": "Newsroom",
     "jobs": "Jobs",
     "audioSamples": "Audio samples",
-    "linkedin": "LinkedIn"
+    "linkedin": "LinkedIn",
+    "contact": "Contact",
+    "imprint": "Imprint",
+    "privacy": "Privacy"
   }
 }

@@ -14,8 +14,17 @@
     "servicesHeading": "Leistungen",
     "companyHeading": "Unternehmen",
     "contactHeading": "Kontakt",
+    "live": "Live",
+    "social": "Social Media",
+    "artwork": "Artwork",
+    "community": "Community",
+    "about": "Über uns",
+    "newsroom": "Newsroom",
     "jobs": "Karriere",
     "audioSamples": "Audio-Beispiele",
-    "linkedin": "LinkedIn"
+    "linkedin": "LinkedIn",
+    "contact": "Kontakt",
+    "imprint": "Impressum",
+    "privacy": "Datenschutz"
   }
 }

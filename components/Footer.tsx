@@ -24,16 +24,16 @@ export default function Footer({
             {dict.footer.servicesHeading}
           </b>
           <Link href={`/${locale}/services`} className="hover:text-yellow">
-            Live
+            {dict.footer.live}
           </Link>
           <Link href={`/${locale}/services`} className="hover:text-yellow">
-            Social
+            {dict.footer.social}
           </Link>
           <Link href={`/${locale}/services`} className="hover:text-yellow">
-            Artwork
+            {dict.footer.artwork}
           </Link>
           <Link href={`/${locale}/services`} className="hover:text-yellow">
-            Community
+            {dict.footer.community}
           </Link>
         </div>
 
@@ -42,10 +42,10 @@ export default function Footer({
             {dict.footer.companyHeading}
           </b>
           <Link href={`/${locale}/about`} className="hover:text-yellow">
-            About
+            {dict.footer.about}
           </Link>
           <Link href={`/${locale}/newsroom`} className="hover:text-yellow">
-            Newsroom
+            {dict.footer.newsroom}
           </Link>
           <Link href={`/${locale}/careers`} className="hover:text-yellow">
             {dict.footer.jobs}
@@ -78,13 +78,13 @@ export default function Footer({
 
       <div className="max-w-[1240px] mx-auto px-8 mt-12 pt-6 border-t border-line flex gap-6 flex-wrap text-xs">
         <Link href={`/${locale}/contact`} className="hover:text-yellow">
-          Contact
+          {dict.footer.contact}
         </Link>
         <Link href={`/${locale}/imprint`} className="hover:text-yellow">
-          Imprint
+          {dict.footer.imprint}
         </Link>
         <Link href={`/${locale}/privacy`} className="hover:text-yellow">
-          Privacy
+          {dict.footer.privacy}
         </Link>
       </div>
     </footer>

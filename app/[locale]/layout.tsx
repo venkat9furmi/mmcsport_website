@@ -68,7 +68,7 @@ export default async function LocaleLayout({
       data-theme="dark"
       className={`${anton.variable} ${archivo.variable} ${robotoMono.variable}`}
     >
-      <head>
+      <body className="min-h-screen flex flex-col bg-ink text-paper">
         <Script
           id="theme-init"
           strategy="beforeInteractive"
@@ -76,8 +76,6 @@ export default async function LocaleLayout({
             __html: `(function(){try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark"){document.documentElement.setAttribute("data-theme",t);}}catch(e){}})();`,
           }}
         />
-      </head>
-      <body className="min-h-screen flex flex-col bg-ink text-paper">
         <Nav locale={locale as Locale} dict={dict} />
         <main className="flex-1">{children}</main>
         <Footer locale={locale as Locale} dict={dict} />
