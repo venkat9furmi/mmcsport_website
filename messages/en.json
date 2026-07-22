@@ -1,0 +1,21 @@
+{
+  "nav": {
+    "services": "Services",
+    "work": "Work",
+    "languages": "Languages",
+    "newsroom": "Newsroom",
+    "about": "About",
+    "demo": "Book a demo",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "footer": {
+    "location": "Munich, Germany",
+    "servicesHeading": "Services",
+    "companyHeading": "Company",
+    "contactHeading": "Contact",
+    "jobs": "Jobs",
+    "audioSamples": "Audio samples",
+    "linkedin": "LinkedIn"
+  }
+}

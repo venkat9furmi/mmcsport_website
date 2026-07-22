@@ -1,0 +1,247 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #000000;
+  --yellow: #FBC908;
+  --paper: #FFFFFF;
+  --smoke: #8C8B85;
+  --panel: #0C0C0C;
+  --line: #232323;
+  --muted: #C9C8C2;
+  --dim: #2C2C2C;
+}
+
+:root[data-theme="light"] {
+  --ink: #FFFFFF;
+  --paper: #000000;
+  --smoke: #6B6A64;
+  --panel: #F3F2ED;
+  --line: #E4E3DD;
+  --muted: #4A4A46;
+  --dim: #D8D7D0;
+}
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-yellow: var(--yellow);
+  --color-paper: var(--paper);
+  --color-smoke: var(--smoke);
+  --color-panel: var(--panel);
+  --color-line: var(--line);
+  --color-muted: var(--muted);
+  --color-dim: var(--dim);
+
+  --font-display: var(--font-anton), "Arial Narrow", sans-serif;
+  --font-body: var(--font-archivo), system-ui, sans-serif;
+  --font-mono: var(--font-roboto-mono), monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
+
+:focus-visible {
+  outline: 3px solid var(--yellow);
+  outline-offset: 3px;
+}
+
+.display {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  line-height: 0.92;
+  letter-spacing: 0.01em;
+  font-weight: 400;
+}
+
+.mono {
+  font-family: var(--font-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.hl {
+  background: var(--yellow);
+  color: #000000;
+  padding: 0 0.18em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.list-slash {
+  list-style: none;
+}
+
+.list-slash li::before {
+  content: "/";
+  color: var(--yellow);
+  margin-right: 8px;
+  font-weight: 600;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+}
+
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+
+@keyframes marquee-slide {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.chalk-wrap {
+  perspective: 900px;
+}
+
+.chalk {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(5px 8px 7px rgba(0, 0, 0, 0.5));
+  transform-style: preserve-3d;
+  animation: chalk-float 9s ease-in-out infinite;
+}
+
+@keyframes chalk-float {
+  0%,
+  100% {
+    transform: rotateX(10deg) rotateY(-7deg);
+  }
+  50% {
+    transform: rotateX(6deg) rotateY(-3deg);
+  }
+}
+
+.chalk-circle-a,
+.chalk-circle-b {
+  stroke: var(--yellow);
+  stroke-width: 8;
+  fill: none;
+  stroke-dasharray: var(--len);
+  stroke-dashoffset: var(--len);
+  animation: draw 0.9s cubic-bezier(0.3, 0.9, 0.4, 1) forwards;
+}
+
+.chalk-circle-a {
+  animation-delay: 0s;
+}
+
+.chalk-circle-b {
+  animation-delay: 3.5s;
+}
+
+.chalk-line-1,
+.chalk-line-2 {
+  stroke: var(--yellow);
+  stroke-width: 9;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: var(--len);
+  stroke-dashoffset: var(--len);
+  animation: draw 0.55s ease forwards;
+}
+
+.chalk-line-1 {
+  animation-delay: 0.9s;
+}
+
+.chalk-line-2 {
+  animation-delay: 2.4s;
+}
+
+.chalk-arrowhead-1,
+.chalk-arrowhead-2,
+.chalk-cross {
+  stroke: var(--yellow);
+  stroke-width: 9;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: var(--len);
+  stroke-dashoffset: var(--len);
+  animation: draw 0.3s cubic-bezier(0.2, 1.5, 0.5, 1) forwards;
+}
+
+.chalk-arrowhead-1 {
+  animation-delay: 1.5s;
+}
+
+.chalk-cross {
+  animation-delay: 1.9s;
+}
+
+.chalk-arrowhead-2 {
+  animation-delay: 3s;
+}
+
+.live-dot {
+  animation: pulse 1.4s infinite;
+}
+
+.marquee-track {
+  display: flex;
+  gap: 52px;
+  width: max-content;
+  animation: marquee-slide 34s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}

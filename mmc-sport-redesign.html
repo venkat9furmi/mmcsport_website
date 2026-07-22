@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>mmc sport — Built for football. Built for speed. Built for languages.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#000000;
+  --yellow:#FBC908;
+  --paper:#FFFFFF;
+  --smoke:#8C8B85;
+  --panel:#0C0C0C;
+  --line:#232323;
+  --display:'Anton', 'Arial Narrow', sans-serif;
+  --body:'Archivo', system-ui, sans-serif;
+  --mono:'Roboto Mono', monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--ink);color:var(--paper);
+  font-family:var(--body);font-size:17px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+.wrap{max-width:1240px;margin:0 auto;padding:0 32px}
+.display{font-family:var(--display);text-transform:uppercase;line-height:.92;letter-spacing:.01em;font-weight:400}
+.mono{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+.hl{background:var(--yellow);color:var(--ink);padding:0 .18em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+
+/* ---------- nav ---------- */
+nav{position:sticky;top:0;z-index:50;background:rgba(0,0,0,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{font-family:var(--display);font-size:26px;text-transform:uppercase;letter-spacing:.02em}
+.logo{color:var(--yellow)}
+.nav-links{display:flex;gap:34px;align-items:center}
+.nav-links a{font-size:13px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--smoke);transition:color .2s}
+.nav-links a:hover{color:var(--paper)}
+.nav-cta{background:var(--yellow);color:var(--ink)!important;padding:11px 20px;font-weight:600}
+.nav-cta:hover{background:var(--paper)}
+.burger{display:none;background:none;border:0;color:var(--paper);font-size:24px;cursor:pointer}
+
+/* ---------- hero ---------- */
+header{position:relative;padding:110px 0 0;overflow:hidden}
+.chalk{position:absolute;top:-40px;right:-60px;width:560px;opacity:.9;pointer-events:none}
+.chalk path{stroke:var(--yellow);stroke-width:7;fill:none;stroke-linecap:round;
+  stroke-dasharray:var(--len);stroke-dashoffset:var(--len);animation:draw 1.6s ease forwards}
+.chalk path:nth-child(2){animation-delay:.35s}
+.chalk path:nth-child(3){animation-delay:.7s}
+.chalk circle{stroke:var(--yellow);stroke-width:7;fill:none;
+  stroke-dasharray:300;stroke-dashoffset:300;animation:draw 1.4s ease .5s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+h1{font-family:var(--display);text-transform:uppercase;font-size:clamp(52px,8.4vw,116px);line-height:.9;max-width:14ch}
+.kicker{color:var(--yellow);margin-bottom:22px}
+.sub{max-width:52ch;color:#C9C8C2;margin-top:30px;font-size:19px}
+.hero-cta{display:flex;gap:14px;margin-top:40px;flex-wrap:wrap}
+.btn{display:inline-block;padding:16px 30px;font-weight:600;font-size:14px;letter-spacing:.08em;text-transform:uppercase;transition:.2s}
+.btn-y{background:var(--yellow);color:var(--ink)}
+.btn-y:hover{background:var(--paper)}
+.btn-o{border:1px solid #3A3A3A;color:var(--paper)}
+.btn-o:hover{border-color:var(--yellow);color:var(--yellow)}
+
+/* ---------- live desk (signature) ---------- */
+.desk{margin-top:96px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--panel)}
+.desk-head{display:flex;align-items:center;gap:12px;padding:18px 0 14px;border-bottom:1px solid var(--line)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--yellow);animation:pulse 1.4s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+.desk-head .mono{color:var(--smoke)}
+.clock{margin-left:auto;font-family:var(--mono);font-size:13px;color:var(--yellow);letter-spacing:.1em}
+.feed{height:200px;overflow:hidden;position:relative}
+.feed-row{display:grid;grid-template-columns:64px 92px 1fr 108px;gap:20px;align-items:center;
+  padding:14px 0;border-bottom:1px solid #161616;font-size:15px}
+.feed-row .t{font-family:var(--mono);font-size:12px;color:var(--smoke)}
+.feed-row .lang{font-family:var(--mono);font-size:12px;color:var(--yellow);letter-spacing:.1em}
+.feed-row .what{color:#DEDDD7;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.feed-row .cl{font-family:var(--mono);font-size:11px;color:var(--smoke);text-align:right;letter-spacing:.08em}
+
+/* ---------- stats ---------- */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);margin:0}
+.stat{background:var(--ink);padding:56px 28px}
+.stat b{display:block;font-family:var(--display);font-size:clamp(44px,5vw,72px);color:var(--yellow);line-height:1}
+.stat span{display:block;margin-top:12px;font-size:14px;color:var(--smoke);letter-spacing:.04em}
+
+/* ---------- sections ---------- */
+section{padding:120px 0}
+.eyebrow{display:inline-block;background:var(--yellow);color:var(--ink);font-weight:600;
+  font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:5px 10px;margin-bottom:20px}
+h2{font-family:var(--display);text-transform:uppercase;font-size:clamp(38px,5.6vw,76px);line-height:.94}
+.lede{max-width:56ch;color:#C9C8C2;margin-top:24px;font-size:19px}
+
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);margin-top:64px;border:1px solid var(--line)}
+.card{background:var(--ink);padding:40px 32px 46px;transition:background .25s}
+.card:hover{background:var(--panel)}
+.card .num{font-family:var(--mono);font-size:12px;color:var(--yellow);letter-spacing:.1em}
+.card h3{font-family:var(--display);text-transform:uppercase;font-size:28px;line-height:1;margin:18px 0 14px;font-weight:400}
+.card p{color:var(--smoke);font-size:15.5px;line-height:1.65}
+.card ul{list-style:none;margin-top:18px}
+.card li{font-size:14px;color:#B9B8B2;padding:5px 0}
+.card li::before{content:"/";color:var(--yellow);margin-right:8px;font-weight:600}
+
+/* ---------- languages ---------- */
+.langs{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:36px 0;overflow:hidden;background:var(--panel)}
+.marquee{display:flex;gap:52px;width:max-content;animation:slide 34s linear infinite}
+.marquee:hover{animation-play-state:paused}
+@keyframes slide{to{transform:translateX(-50%)}}
+.marquee span{font-family:var(--display);text-transform:uppercase;font-size:30px;color:#2C2C2C;white-space:nowrap;transition:color .2s}
+.marquee span:hover{color:var(--yellow)}
+
+/* ---------- work ---------- */
+.work{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);margin-top:64px;border:1px solid var(--line)}
+.case{background:var(--ink);padding:44px 36px 50px}
+.case .client{font-family:var(--mono);font-size:12px;color:var(--yellow);letter-spacing:.12em}
+.case h3{font-family:var(--display);text-transform:uppercase;font-size:34px;line-height:1;margin:16px 0 18px;font-weight:400;max-width:16ch}
+.case p{color:var(--smoke);font-size:16px}
+.result{display:flex;gap:36px;margin-top:28px;padding-top:24px;border-top:1px solid var(--line)}
+.result div b{display:block;font-family:var(--display);font-size:38px;color:var(--paper);line-height:1}
+.result div span{font-family:var(--mono);font-size:11px;color:var(--smoke);letter-spacing:.08em}
+
+/* ---------- cta ---------- */
+.final{background:var(--yellow);color:var(--ink);padding:120px 0}
+.final h2{max-width:16ch}
+.final p{max-width:46ch;margin-top:22px;font-size:19px;font-weight:500}
+.final .btn-y{background:var(--ink);color:var(--yellow);margin-top:38px}
+.final .btn-y:hover{background:#1a1a1a}
+
+footer{padding:64px 0 40px;border-top:1px solid var(--line);color:var(--smoke);font-size:14px}
+.foot-grid{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap}
+.foot-grid a{color:var(--smoke)}
+.foot-grid a:hover{color:var(--yellow)}
+.foot-col{display:flex;flex-direction:column;gap:10px}
+.foot-col b{color:var(--paper);font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px;font-weight:500}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+
+@media (max-width:940px){
+  .nav-links{display:none}
+  .burger{display:block}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .grid{grid-template-columns:1fr}
+  .work{grid-template-columns:1fr}
+  .chalk{width:320px;opacity:.35;top:-20px;right:-80px}
+  .feed-row{grid-template-columns:56px 76px 1fr;font-size:14px}
+  .feed-row .cl{display:none}
+  section{padding:80px 0}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+}
+
+/* mobile menu */
+#mobile-menu{display:none;border-top:1px solid var(--line);background:var(--ink)}
+#mobile-menu.open{display:block}
+#mobile-menu a{display:block;padding:16px 32px;border-bottom:1px solid var(--line);
+  font-size:14px;letter-spacing:.1em;text-transform:uppercase;font-weight:500}
+#mobile-menu a:last-child{background:var(--yellow);color:var(--ink);border:0}
+
+/* newsroom */
+.posts{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);margin-top:64px;border:1px solid var(--line)}
+.post{background:var(--ink);padding:36px 30px 42px;transition:background .25s;display:flex;flex-direction:column}
+.post:hover{background:var(--panel)}
+.post .tag{font-family:var(--mono);font-size:11px;color:var(--yellow);letter-spacing:.12em}
+.post h3{font-family:var(--display);text-transform:uppercase;font-size:24px;line-height:1.05;margin:16px 0 12px;font-weight:400}
+.post p{color:var(--smoke);font-size:15px;flex:1}
+.post .read{margin-top:20px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--paper)}
+.post:hover .read{color:var(--yellow)}
+
+/* about */
+.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:80px;align-items:start;margin-top:56px}
+.about-grid p{color:#C9C8C2;font-size:18px;margin-bottom:20px}
+.facts{border-left:2px solid var(--yellow);padding-left:28px}
+.facts div{padding:14px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:20px}
+.facts div:last-child{border:0}
+.facts b{font-family:var(--mono);font-size:12px;color:var(--smoke);letter-spacing:.1em;text-transform:uppercase;font-weight:400}
+.facts span{font-size:15px;color:var(--paper);text-align:right}
+
+/* demo */
+.demo-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.demo-grid ul{list-style:none;margin-top:32px}
+.demo-grid li{padding:12px 0;font-size:17px;font-weight:500;border-bottom:1px solid rgba(0,0,0,.15)}
+.demo-grid li::before{content:"/";margin-right:10px;font-weight:600}
+form{display:flex;flex-direction:column;gap:18px}
+.field{display:flex;flex-direction:column;gap:7px}
+.field label{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+.field input,.field select,.field textarea{
+  background:var(--ink);color:var(--paper);border:0;padding:15px 16px;
+  font-family:var(--body);font-size:16px;width:100%}
+.field textarea{min-height:110px;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{outline:2px solid var(--ink);outline-offset:2px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+form button{background:var(--ink);color:var(--yellow);border:0;padding:18px;cursor:pointer;
+  font-family:var(--body);font-weight:600;font-size:14px;letter-spacing:.08em;text-transform:uppercase;transition:.2s}
+form button:hover{background:#1a1a1a}
+.form-note{font-size:13px;font-weight:500;opacity:.7}
+.sent{display:none;border:2px solid var(--ink);padding:36px}
+.sent.show{display:block}
+.sent h3{font-family:var(--display);text-transform:uppercase;font-size:30px;font-weight:400;margin-bottom:10px}
+
+@media (max-width:940px){
+  .posts{grid-template-columns:1fr}
+  .about-grid,.demo-grid{grid-template-columns:1fr;gap:44px}
+  .two{grid-template-columns:1fr}
+}
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-in">
+    <a href="#top" class="logo">mmc sport</a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#languages">Languages</a>
+      <a href="#newsroom">Newsroom</a>
+      <a href="#about">About</a>
+      <a href="#demo" class="nav-cta">Book a demo</a>
+    </div>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">☰</button>
+  </div>
+  <div id="mobile-menu">
+    <a href="#services">Services</a>
+    <a href="#work">Work</a>
+    <a href="#languages">Languages</a>
+    <a href="#newsroom">Newsroom</a>
+    <a href="#about">About</a>
+    <a href="#demo">Book a demo</a>
+  </div>
+</nav>
+
+<header id="top">
+  <div class="wrap">
+    <svg class="chalk" viewBox="0 0 400 320" aria-hidden="true">
+      <path d="M40 280 C 60 180, 140 160, 170 90" style="--len:260"/>
+      <path d="M155 110 L 172 84 L 196 100" style="--len:70"/>
+      <circle cx="255" cy="180" r="46"/>
+      <path d="M300 300 C 330 240, 300 190, 330 130" style="--len:220"/>
+    </svg>
+
+    <p class="mono kicker">Munich · Since 1994 · 20+ languages</p>
+    <h1>Built for football.<br>Built for <span class="hl">speed.</span><br>Built for languages.</h1>
+    <p class="sub">We are the multilingual newsroom behind Europe's biggest football brands. Live commentary, social, artwork and community — published natively, in every market, at match tempo.</p>
+    <div class="hero-cta">
+      <a href="#demo" class="btn btn-y">Book a demo</a>
+      <a href="#work" class="btn btn-o">See the work</a>
+    </div>
+  </div>
+
+  <div class="desk">
+    <div class="wrap">
+      <div class="desk-head">
+        <span class="dot" aria-hidden="true"></span>
+        <span class="mono">The desk — live now</span>
+        <span class="clock mono" id="clock">--:--:--</span>
+      </div>
+      <div class="feed" id="feed"></div>
+    </div>
+  </div>
+</header>
+
+<div class="stats">
+  <div class="stat"><b>120+</b><span>live commentaries every week</span></div>
+  <div class="stat"><b>20+</b><span>languages, 365 days a year</span></div>
+  <div class="stat"><b>80+</b><span>social channels managed</span></div>
+  <div class="stat"><b>30+</b><span>club and league websites run</span></div>
+</div>
+
+<section id="services">
+  <div class="wrap">
+    <span class="eyebrow reveal">Always on</span>
+    <h2 class="reveal">One newsroom.<br>Every market.</h2>
+    <p class="lede reveal">Clubs don't need a translation vendor and a social agency and a design studio. They need one room that can do all three, in the right language, before the moment passes.</p>
+
+    <div class="grid">
+      <div class="card reveal">
+        <span class="num">01 — Live</span>
+        <h3>Live services</h3>
+        <p>Match-tempo commentary, reaction and matchday coverage. Nothing waits for a queue.</p>
+        <ul><li>Live commentary in 20+ languages</li><li>Matchday social coverage</li><li>Real-time reaction packages</li></ul>
+      </div>
+      <div class="card reveal">
+        <span class="num">02 — Social</span>
+        <h3>Social media</h3>
+        <p>Platform-native content across every category, built for the market it lands in — not translated into it.</p>
+        <ul><li>Local hero content</li><li>Authentic trends &amp; topics</li><li>Channel strategy &amp; publishing</li></ul>
+      </div>
+      <div class="card reveal">
+        <span class="num">03 — Artwork</span>
+        <h3>Localised artwork</h3>
+        <p>Good design feels local. Visual language that creates familiarity, not just legibility.</p>
+        <ul><li>Market-native key visuals</li><li>Cultural &amp; calendar moments</li><li>Full asset adaptation</li></ul>
+      </div>
+      <div class="card reveal">
+        <span class="num">04 — Players</span>
+        <h3>Player connections</h3>
+        <p>The stories only a native-speaking editor spots — and only a native-speaking audience feels.</p>
+        <ul><li>Player-led storytelling</li><li>Interview &amp; SOT localisation</li><li>Voice-over &amp; subtitling</li></ul>
+      </div>
+      <div class="card reveal">
+        <span class="num">05 — Community</span>
+        <h3>Community management</h3>
+        <p>Moderation and conversation in the fan's own language, in the fan's own tone.</p>
+        <ul><li>24/7 multilingual moderation</li><li>Fan conversation &amp; care</li><li>Escalation &amp; crisis cover</li></ul>
+      </div>
+      <div class="card reveal">
+        <span class="num">06 — Enablement</span>
+        <h3>Social-native education</h3>
+        <p>We hand the playbook over. Your in-house team learns to run the market themselves.</p>
+        <ul><li>Team workshops</li><li>Market playbooks</li><li>Editorial standards &amp; tone</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="langs" id="languages">
+  <div class="marquee" id="marq"></div>
+</div>
+
+<section id="work">
+  <div class="wrap">
+    <span class="eyebrow reveal">Why it works</span>
+    <h2 class="reveal">Proof, not logos.</h2>
+    <p class="lede reveal">Every client wall looks the same. What separates agencies is what happened after the contract was signed.</p>
+
+    <div class="work">
+      <article class="case reveal">
+        <span class="client">Manchester City</span>
+        <h3>From one language to a market team</h3>
+        <p>Started with Russian social in 2018/19. Expanded to French web and social in 2021. What began as a translation brief became a permanent market desk.</p>
+        <div class="result">
+          <div><b>2</b><span>Markets run end-to-end</span></div>
+          <div><b>7 yrs</b><span>Continuous partnership</span></div>
+        </div>
+      </article>
+      <article class="case reveal">
+        <span class="client">Inter Milan · AC Milan</span>
+        <h3>Content that reads as if it were written there</h3>
+        <p>Islamic New Year artwork in Arabic. Hari Wayang Nasional in Indonesian. Quién Soy in Spanish. Not adapted assets — assets made for the market.</p>
+        <div class="result">
+          <div><b>22k+</b><span>Reactions, single post</span></div>
+          <div><b>14.2k</b><span>Views, localised artwork</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+<section id="newsroom" style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <span class="eyebrow reveal">Newsroom</span>
+    <h2 class="reveal">What we're<br>learning.</h2>
+    <p class="lede reveal">We publish in twenty languages every day. Here's what that teaches us about how football content actually travels.</p>
+
+    <div class="posts">
+      <a href="#" class="post reveal">
+        <span class="tag">Report · 2026</span>
+        <h3>The localisation gap</h3>
+        <p>Why a translated caption underperforms a written-for-market one — measured across 4,000 club posts in nine languages.</p>
+        <span class="read">Read the report →</span>
+      </a>
+      <a href="#" class="post reveal">
+        <span class="tag">Analysis</span>
+        <h3>What AI dubbing still gets wrong in football</h3>
+        <p>Machine dubbing has closed the speed gap. It has not closed the terminology gap, and in live commentary that is the whole job.</p>
+        <span class="read">Read the analysis →</span>
+      </a>
+      <a href="#" class="post reveal">
+        <span class="tag">Playbook</span>
+        <h3>Matchday in nine markets</h3>
+        <p>How one fixture becomes ninety pieces of native content — and the ninety minutes we have to do it in.</p>
+        <span class="read">Read the playbook →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="about" style="background:var(--panel);border-top:1px solid var(--line)">
+  <div class="wrap">
+    <span class="eyebrow reveal">About</span>
+    <h2 class="reveal">A newsroom,<br>not an agency.</h2>
+    <div class="about-grid">
+      <div class="reveal">
+        <p>Most agencies hire translators when a brief comes in. We employ them — sports journalists, commentators, voice-over artists, editors and community managers, sitting in one room in Munich and across the markets we cover.</p>
+        <p>That's why the work reads like it was written where it lands. Because it was.</p>
+        <p>Thirty years in international football communication. UEFA, the DFB, the Bundesliga, Bayern Munich, Manchester City, Inter Milan, AC Milan.</p>
+      </div>
+      <div class="facts reveal">
+        <div><b>Founded</b><span>Munich, 1994</span></div>
+        <div><b>Team</b><span>Journalists, translators, commentators, designers</span></div>
+        <div><b>Coverage</b><span>365 days a year, matchday to matchday</span></div>
+        <div><b>Languages</b><span>20+ and growing</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="final" id="demo">
+  <div class="wrap demo-grid">
+    <div>
+      <h2>Book a demo.</h2>
+      <p>Thirty minutes with an editor, not a salesperson. Bring us a real fixture and a real market — we'll show you what the desk would have published.</p>
+      <ul>
+        <li>Live walkthrough of a matchday in your market</li>
+        <li>Sample localised assets, made for your club</li>
+        <li>Honest answer on what we'd charge</li>
+      </ul>
+    </div>
+
+    <div>
+      <form id="demo-form" novalidate>
+        <div class="two">
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" required autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="org">Club or organisation</label>
+            <input id="org" name="org" type="text" required autocomplete="organization">
+          </div>
+        </div>
+        <div class="field">
+          <label for="email">Work email</label>
+          <input id="email" name="email" type="email" required autocomplete="email">
+        </div>
+        <div class="field">
+          <label for="market">Market you want to grow</label>
+          <select id="market" name="market" required>
+            <option value="">Select a market</option>
+            <option>DACH / German</option>
+            <option>Italy / Italian</option>
+            <option>France / French</option>
+            <option>Spain &amp; LATAM / Spanish</option>
+            <option>Brazil / Portuguese</option>
+            <option>MENA / Arabic</option>
+            <option>Indonesia / Bahasa</option>
+            <option>Japan / Japanese</option>
+            <option>Multiple markets</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="brief">What's the brief?</label>
+          <textarea id="brief" name="brief" placeholder="A competition, a season, a channel you can't staff."></textarea>
+        </div>
+        <button type="submit">Request a slot</button>
+        <p class="form-note">We reply within one working day. No sales deck.</p>
+      </form>
+
+      <div class="sent" id="sent">
+        <h3>Request received</h3>
+        <p>An editor will come back to you within one working day — with a fixture in mind.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div class="foot-col">
+      <a href="#top" class="logo" style="font-size:22px">mmc sport</a>
+      <span>Munich, Germany</span>
+    </div>
+    <div class="foot-col"><b>Services</b><a href="#services">Live</a><a href="#services">Social</a><a href="#services">Artwork</a><a href="#services">Community</a></div>
+    <div class="foot-col"><b>Company</b><a href="#about">About</a><a href="#newsroom">Newsroom</a><a href="#">Jobs</a><a href="#">Audio samples</a></div>
+    <div class="foot-col"><b>Contact</b><a href="#">hello@mmcsport.de</a><a href="#">jobs@mmcsport.de</a><a href="#">LinkedIn</a></div>
+  </div>
+</footer>
+
+<script>
+const items = [
+  ["DE","Matchday preview · Bundesliga 27","DFB"],
+  ["IT","Live commentary · Serie A","Inter Milan"],
+  ["FR","Website article · Premier League","Man City"],
+  ["ID","Localised artwork · matchday","AC Milan"],
+  ["AR","Community reply queue","UEFA"],
+  ["JP","Subtitles · player interview","Bundesliga"],
+  ["PT-BR","Social carousel · squad news","Inter Milan"],
+  ["ES","Voice-over script · magazine","UEFA"],
+  ["EN","Live commentary · UCL","UEFA"],
+  ["ZH","Trend post · transfer window","Man City"]
+];
+const feed = document.getElementById('feed');
+function stamp(off){
+  const d = new Date(Date.now() - off*1000);
+  return String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0');
+}
+function row(i, off){
+  const [lang, what, cl] = items[i % items.length];
+  const el = document.createElement('div');
+  el.className = 'feed-row';
+  el.innerHTML = `<span class="t">${stamp(off)}</span><span class="lang">${lang}</span><span class="what">${what}</span><span class="cl">${cl}</span>`;
+  return el;
+}
+let n = 0;
+for (let k = 5; k >= 0; k--) feed.appendChild(row(n++, k*140));
+setInterval(() => {
+  feed.insertBefore(row(n++, 0), feed.firstChild);
+  if (feed.children.length > 7) feed.lastChild.remove();
+}, 3600);
+
+const clock = document.getElementById('clock');
+setInterval(() => {
+  const d = new Date();
+  clock.textContent = [d.getHours(),d.getMinutes(),d.getSeconds()]
+    .map(v=>String(v).padStart(2,'0')).join(':') + ' CET';
+}, 1000);
+
+const langs = ["English","Deutsch","Italiano","Français","Español","Português","العربية","日本語","中文","Bahasa Indonesia","Русский","Nederlands","Türkçe","한국어","粵語"];
+const marq = document.getElementById('marq');
+marq.innerHTML = [...langs, ...langs].map(l => `<span>${l}</span>`).join('');
+
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); }), {threshold:.15});
+document.querySelectorAll('.reveal').forEach((el,i) => { el.style.transitionDelay = (i%3)*70+'ms'; io.observe(el); });
+
+const burger = document.getElementById('burger');
+const menu = document.getElementById('mobile-menu');
+burger.addEventListener('click', () => {
+  const open = menu.classList.toggle('open');
+  burger.setAttribute('aria-expanded', String(open));
+  burger.textContent = open ? '✕' : '☰';
+});
+menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  menu.classList.remove('open');
+  burger.setAttribute('aria-expanded','false');
+  burger.textContent = '☰';
+}));
+
+const form = document.getElementById('demo-form');
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  if (!form.checkValidity()) { form.reportValidity(); return; }
+  form.style.display = 'none';
+  document.getElementById('sent').classList.add('show');
+});
+</script>
+</body>
+</html>

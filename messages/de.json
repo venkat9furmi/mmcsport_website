@@ -1,0 +1,21 @@
+{
+  "nav": {
+    "services": "Leistungen",
+    "work": "Arbeiten",
+    "languages": "Sprachen",
+    "newsroom": "Newsroom",
+    "about": "Über uns",
+    "demo": "Demo buchen",
+    "openMenu": "Menü öffnen",
+    "closeMenu": "Menü schließen"
+  },
+  "footer": {
+    "location": "München, Deutschland",
+    "servicesHeading": "Leistungen",
+    "companyHeading": "Unternehmen",
+    "contactHeading": "Kontakt",
+    "jobs": "Karriere",
+    "audioSamples": "Audio-Beispiele",
+    "linkedin": "LinkedIn"
+  }
+}
